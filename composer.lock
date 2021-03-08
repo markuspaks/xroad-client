@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b509d00e134185a05d07e22b0e677acd",
+    "content-hash": "90a7d80a09bf1d05706e2de129fa499e",
     "packages": [
         {
             "name": "guzzlehttp/psr7",
@@ -83,21 +83,29 @@
         },
         {
             "name": "markuspaks/dependable-soap-client",
-            "version": "dev-master",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/markuspaks/dependable-soap-client.git",
+                "reference": "cf838600de617afce544f6c6c89c47c1ca9910ec"
+            },
             "dist": {
-                "type": "path",
-                "url": "../dependable-soap-client",
-                "reference": "662b760108dbe51e3ffbe990d0e4a97673945834"
+                "type": "zip",
+                "url": "https://api.github.com/repos/markuspaks/dependable-soap-client/zipball/cf838600de617afce544f6c6c89c47c1ca9910ec",
+                "reference": "cf838600de617afce544f6c6c89c47c1ca9910ec",
+                "shasum": ""
             },
             "require": {
                 "zbateson/mail-mime-parser": "^1.3"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "DependableSoapClient\\": "."
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -108,10 +116,11 @@
                 }
             ],
             "description": "Improved SOAP client for PHP with attachments support",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/markuspaks/dependable-soap-client/issues",
+                "source": "https://github.com/markuspaks/dependable-soap-client/tree/main"
+            },
+            "time": "2021-03-08T23:02:40+00:00"
         },
         {
             "name": "psr/http-message",

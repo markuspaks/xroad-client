@@ -9,17 +9,8 @@
       "email": "markus.paks@gmail.com"
     }
   ],
-  "repositories" : [
-    {
-      "type": "path",
-      "url": "../dependable-soap-client",
-      "options": {
-        "symlink": true
-      }
-    }
-  ],
   "require": {
-    "markuspaks/dependable-soap-client": "dev-master"
+    "markuspaks/dependable-soap-client": "dev-main"
   },
   "autoload": {
     "psr-4": {
