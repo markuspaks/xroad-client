@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "markuspaks/dependable-soap-client": "dev-main"
+    "markuspaks/dependable-soap-client": "^1.0"
   },
   "autoload": {
     "psr-4": {
