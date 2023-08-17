@@ -2,6 +2,7 @@
 
 namespace XRoadClient;
 
+use SoapFault;
 use XRoadClient\Soap\Client;
 
 class XRoadClient
@@ -35,9 +36,12 @@ class XRoadClient
         return call_user_func_array([$this->soapClient, '__call'], $args);
     }
 
+    /**
+     * @throws SoapFault
+     */
     public function setSoap(string $wsdl, ?array $options = null): void
     {
-        $soapClient = new \XRoadClient\Soap\Client($wsdl, $options);
+        $soapClient = new Client($wsdl, $options);
         $this->soapClient = $soapClient;
     }
 
@@ -51,14 +55,13 @@ class XRoadClient
         $this->soapClient->setClient($client);
     }
 
-    public function getLastRequest()
+    public function getLastRequest(): ?string
     {
         return $this->soapClient->__getLastRequest();
     }
 
-    public function getLastResponse()
+    public function getLastResponse(): ?string
     {
         return $this->soapClient->__getLastResponse();
     }
-
 }

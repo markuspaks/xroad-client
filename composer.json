@@ -10,6 +10,8 @@
     }
   ],
   "require": {
+    "php": "^8.0",
+    "ext-soap": "*",
     "markuspaks/dependable-soap-client": "^1.0"
   },
   "autoload": {

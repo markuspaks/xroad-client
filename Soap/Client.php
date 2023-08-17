@@ -10,18 +10,18 @@ use XRoadClient\Subsystem;
 class Client extends DependableSoapClient
 {
 
-    protected $service;
+    protected Subsystem $service;
 
-    protected $client;
+    protected Subsystem $client;
 
-    protected $version;
+    protected string $version;
 
-    public function setClient(Subsystem $client)
+    public function setClient(Subsystem $client): void
     {
         $this->client = $client;
     }
 
-    public function setService(Subsystem $service)
+    public function setService(Subsystem $service): void
     {
         $this->service = $service;
     }
@@ -29,39 +29,47 @@ class Client extends DependableSoapClient
     /**
      * Call soap function as callable
      *
-     * @param  string  $func
+     * @param  string  $name
      * @param  mixed  $args
      * @return mixed
      */
-    public function __call($func, $args)
+    public function __call(string $name, $args): mixed
     {
         $this->version = array_shift($args);
         $args = [$args]; //This was done in soapCall, but caused issues with wsdl that uses parts
-        array_unshift($args, $func);
+        array_unshift($args, $name);
         return call_user_func_array([$this, '__soapCall'], $args);
     }
 
-    public function __doRequest($request, $location, $action, $version, $one_way = 0)
+    public function __doRequest($request, $location, $action, $version, $oneWay = 0): ?string
     {
-        $request = str_replace('<ns2:service><ns3:xRoadInstance>', '<ns2:service ns3:objectType="SERVICE"><ns3:xRoadInstance>', $request);
-        $request = str_replace('<ns2:client><ns3:xRoadInstance>', '<ns2:client ns3:objectType="SUBSYSTEM"><ns3:xRoadInstance>', $request);
+        $request = str_replace(
+            '<ns2:service><ns3:xRoadInstance>',
+            '<ns2:service ns3:objectType="SERVICE"><ns3:xRoadInstance>',
+            $request
+        );
+        $request = str_replace(
+            '<ns2:client><ns3:xRoadInstance>',
+            '<ns2:client ns3:objectType="SUBSYSTEM"><ns3:xRoadInstance>',
+            $request
+        );
 
         return parent::__doRequest(
             $request,
             $location,
             $action,
             $version,
-            $one_way
+            $oneWay
         );
     }
 
     public function __soapCall(
-        $function_name,
-        $arguments,
-        $options = null,
-        $input_headers = null,
-        &$output_headers = null
-    ) {
+        string $name,
+        array $args,
+        ?array $options = null,
+        $inputHeaders = null,
+        &$outputHeaders = null
+    ): mixed {
         $this->__setSoapHeaders(
             [
                 new SoapHeader('http://x-road.eu/xsd/xroad.xsd', 'userId', 'EE11306955'),
@@ -71,7 +79,7 @@ class Client extends DependableSoapClient
                     'http://x-road.eu/xsd/xroad.xsd',
                     'service',
                     new SoapVar(
-                        new HeaderService($this->service, $function_name, $this->version),
+                        new HeaderService($this->service, $name, $this->version),
                         SOAP_ENC_OBJECT,
                         null,
                         null,
@@ -95,11 +103,11 @@ class Client extends DependableSoapClient
         );
 
         return parent::__soapCall(
-            $function_name,
-            $arguments,
+            $name,
+            $args,
             $options,
-            $input_headers,
-            $output_headers
+            $inputHeaders,
+            $outputHeaders
         );
     }
 
