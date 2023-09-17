@@ -33,7 +33,7 @@ class Client extends DependableSoapClient
      * @param  mixed  $args
      * @return mixed
      */
-    public function __call(string $name, $args): mixed
+    public function __call($name, $args)
     {
         $this->version = array_shift($args);
         $args = [$args]; //This was done in soapCall, but caused issues with wsdl that uses parts
@@ -64,17 +64,18 @@ class Client extends DependableSoapClient
     }
 
     public function __soapCall(
-        string $name,
+        $name,
         array $args,
         ?array $options = null,
         $inputHeaders = null,
         &$outputHeaders = null
-    ): mixed {
+    ) {
+        /** @noinspection HttpUrlsUsage */
         $this->__setSoapHeaders(
             [
-                new SoapHeader('http://x-road.eu/xsd/xroad.xsd', 'userId', 'EE11306955'),
+                new SoapHeader('http://x-road.eu/xsd/xroad.xsd', 'userId', ''),
                 new SoapHeader('http://x-road.eu/xsd/xroad.xsd', 'protocolVersion', '4.0'),
-                new SoapHeader('http://x-road.eu/xsd/xroad.xsd', 'id', 'dasda'),
+                new SoapHeader('http://x-road.eu/xsd/xroad.xsd', 'id', ''),
                 new SoapHeader(
                     'http://x-road.eu/xsd/xroad.xsd',
                     'service',
