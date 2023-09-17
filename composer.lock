@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f5147522e06079f36263e1dc86e6b2ed",
+    "content-hash": "29dec7ff81ae58150f321db67c435e0a",
     "packages": [
         {
             "name": "guzzlehttp/psr7",
@@ -124,16 +124,16 @@
         },
         {
             "name": "markuspaks/dependable-soap-client",
-            "version": "1.2.2",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/markuspaks/dependable-soap-client.git",
-                "reference": "41797791aca119cc1a5d13f326dd87be36169a81"
+                "reference": "53a0a7e4037990ff7cc2a552a462f81b281a16c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/markuspaks/dependable-soap-client/zipball/41797791aca119cc1a5d13f326dd87be36169a81",
-                "reference": "41797791aca119cc1a5d13f326dd87be36169a81",
+                "url": "https://api.github.com/repos/markuspaks/dependable-soap-client/zipball/53a0a7e4037990ff7cc2a552a462f81b281a16c0",
+                "reference": "53a0a7e4037990ff7cc2a552a462f81b281a16c0",
                 "shasum": ""
             },
             "require": {
@@ -163,9 +163,9 @@
             "description": "Improved SOAP client for PHP with attachments support",
             "support": {
                 "issues": "https://github.com/markuspaks/dependable-soap-client/issues",
-                "source": "https://github.com/markuspaks/dependable-soap-client/tree/1.2.2"
+                "source": "https://github.com/markuspaks/dependable-soap-client/tree/1.2.4"
             },
-            "time": "2023-09-17T18:53:43+00:00"
+            "time": "2023-09-17T19:05:54+00:00"
         },
         {
             "name": "pimple/pimple",
